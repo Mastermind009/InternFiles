@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Submit Form Using AJAX and jQuery</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+</head>
+<div id="container">
+ <div id="form" class="result">
+     <form method="POST" id="reg-form">
+        <table border="0">
+        <tr>
+		<?php
+echo "<h2>PHP is Fun!</h2>";
+echo "Hello world!<br>";
+echo "I'm about to learn PHP!<br>";
+echo "This ", "string ", "was ", "made ", "with multiple parameters.";
+?> 
+        <td><input type="text" name="firstname" id="lname" placeholder="First Name" /></td>
+        </tr>
+        
+        <tr>
+        <td><input type="text" name="lname" id="lname" placeholder="Last Name" /></td>
+        </tr>
+        
+        <tr>
+        <td><input type="text" name="email" id="email" placeholder="Your Mail" /></td>
+        </tr>
+        
+        <tr>
+        <td><input type="text" name="phno" id="phno" placeholder="Contact No" /></td>
+        </tr>
+        
+        <tr>
+        <td><hr /></td>
+        </tr>
+        
+        <tr>
+        <td align="center"><button type="submit">Register</button></td>
+        </tr>
+        </table>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function()
+{
+ $(document).on('submit', '#reg-form', function()
+ {
+  
+  //var fn = $("#fname").val();
+  //var ln = $("#lname").val();
+ 
+  //var data = 'fname='+fn+'&lname='+ln;
+
+  var data = $(this).serialize();
+  
+  
+  $.ajax({
+  
+  type : 'POST',
+  url  : 'submit.php',
+  data : data,
+  success :  function(data)
+       {
+        alert("success");
+        $(".result").html(data);
+      
+      
+       }
+	   
+  });
+  return false;
+ });
+ 
+});
+</script>
+</body>
+</html>

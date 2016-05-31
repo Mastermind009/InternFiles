@@ -1,0 +1,57 @@
+<html>
+<head>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/
+libs/jquery/1.3.0/jquery.min.js">
+</script>
+<script type="text/javascript" >
+$(function() {
+$(".submit").click(function() {
+var name = $("#name").val();
+var username = $("#username").val();
+var password = $("#password").val();
+var gender = $("#gender").val();
+var dataString = 'name='+ name ;
+
+
+$.ajax({
+type: "POST",
+url: "join.php",
+data: dataString,
+success: function(data){
+$('.success').html(data);
+
+}
+});
+return false;
+});
+});
+</script>
+
+
+</head>
+<body>
+<form id="form1"   method="POST">
+		
+        <label for="fname">First Name</label>
+		<input type="text" id="firstname" name="firstname" placeholder="Enter First Name" >
+		<br><br>
+		<label for="lname">Last Name </label>
+		<input type="text" id="lname" name="lastname" placeholder="Enter Last Name" >
+		<br><br>
+		<label for="fname">Birthday  </label>
+		<input type="text" id="birthday" name="birthday" placeholder="DD-MM-YYYY" >
+		<br><br>
+		<label for="lname">Company   </label>
+		<input type="text" id="company" name="company" placeholder="Enter Company" >
+		<br><br>
+		<label for="fname">Email Address </label>
+		<input type="text" id="email" name="email" placeholder="example@domain.com"  >
+		<br><br>
+		<label for="lname">Mobile Number</label>
+		<input type="text" id="mobno" name="mobno" placeholder="000-000-0000"   >
+		<div class="success"> </div>
+		<input type="submit" value="Save" class="submit" >  
+		<input type="reset" value="Cancel">  
+    </form>
+</body>
+</html>
